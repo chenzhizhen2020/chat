@@ -33,8 +33,7 @@ while True:
     if user_input.lower() in ["结束对话", "再见", "退出", "结束"]:
         print("感谢您的咨询，再见")
         break
-    result_embeddings = embedder.get_query_embedding(user_input)
-    distances, indices = index.search(numpy.array([result_embeddings]).astype('float32'), k=2)
+    distances, indices = index.search(numpy.array([embedder.get_query_embedding(user_input)]).astype('float32'), k=2)
     # print(f"Indices of nearest neighbors: {indices}")
     # print(f"Distances: {distances}")
     list_index=list(indices)
